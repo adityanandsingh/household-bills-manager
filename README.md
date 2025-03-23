@@ -44,7 +44,8 @@ This project is deployed on Vercel. If you want to deploy your own version:
 Push changes to GitHub.
 Connect the repo to Vercel.
 Vercel automatically builds and deploys the app.
-🔗 Current Deployment: Household Bills Manager
+
+🔗 Current Deployment: [Household Bills Manager](https://v0-react-app-improvement.vercel.app)
 
 
 
