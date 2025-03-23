@@ -1,0 +1,166 @@
+import type { Bill, Category, PaymentHistory, Reminder, User } from "./types"
+
+export const initialCategories: Category[] = [
+  { id: "1", name: "Housing", color: "#FF5733", icon: "home" },
+  { id: "2", name: "Utilities", color: "#33A8FF", icon: "zap" },
+  { id: "3", name: "Internet & Phone", color: "#33FF57", icon: "wifi" },
+  { id: "4", name: "Insurance", color: "#A833FF", icon: "shield" },
+  { id: "5", name: "Subscriptions", color: "#FF33A8", icon: "tv" },
+  { id: "6", name: "Other", color: "#808080", icon: "more-horizontal" },
+]
+
+export const initialBills: Bill[] = [
+  {
+    id: "1",
+    name: "Rent",
+    amount: 1200,
+    dueDate: new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString(),
+    category: "Housing",
+    isPaid: true,
+    isRecurring: true,
+    recurringFrequency: "monthly",
+    recurringDay: 1,
+    notes: "Monthly apartment rent",
+    sharedWith: ["2"],
+  },
+  {
+    id: "2",
+    name: "Electricity",
+    amount: 85.5,
+    dueDate: new Date(new Date().getFullYear(), new Date().getMonth(), 15).toISOString(),
+    category: "Utilities",
+    isPaid: false,
+    isRecurring: true,
+    recurringFrequency: "monthly",
+    recurringDay: 15,
+    sharedWith: ["2"],
+  },
+  {
+    id: "3",
+    name: "Internet",
+    amount: 65,
+    dueDate: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 2).toISOString(),
+    category: "Internet & Phone",
+    isPaid: false,
+    isRecurring: true,
+    recurringFrequency: "monthly",
+    recurringDay: 20,
+  },
+  {
+    id: "4",
+    name: "Water",
+    amount: 45.75,
+    dueDate: new Date(new Date().getFullYear(), new Date().getMonth(), 10).toISOString(),
+    category: "Utilities",
+    isPaid: true,
+    isRecurring: true,
+    recurringFrequency: "monthly",
+    recurringDay: 10,
+  },
+  {
+    id: "5",
+    name: "Netflix",
+    amount: 15.99,
+    dueDate: new Date(new Date().getFullYear(), new Date().getMonth(), 22).toISOString(),
+    category: "Subscriptions",
+    isPaid: false,
+    isRecurring: true,
+    recurringFrequency: "monthly",
+    recurringDay: 22,
+  },
+  {
+    id: "6",
+    name: "Car Insurance",
+    amount: 120,
+    dueDate: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 5).toISOString(),
+    category: "Insurance",
+    isPaid: false,
+    isRecurring: true,
+    recurringFrequency: "monthly",
+    recurringDay: 5,
+  },
+]
+
+export const initialPaymentHistory: PaymentHistory[] = [
+  {
+    id: "1",
+    billId: "1",
+    billName: "Rent",
+    amount: 1200,
+    date: new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString(),
+    category: "Housing",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    id: "2",
+    billId: "4",
+    billName: "Water",
+    amount: 45.75,
+    date: new Date(new Date().getFullYear(), new Date().getMonth(), 10).toISOString(),
+    category: "Utilities",
+    paymentMethod: "Credit Card",
+  },
+  {
+    id: "3",
+    billId: "1",
+    billName: "Rent",
+    amount: 1200,
+    date: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1).toISOString(),
+    category: "Housing",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    id: "4",
+    billId: "2",
+    billName: "Electricity",
+    amount: 78.25,
+    date: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 15).toISOString(),
+    category: "Utilities",
+    paymentMethod: "Credit Card",
+  },
+  {
+    id: "5",
+    billId: "3",
+    billName: "Internet",
+    amount: 65,
+    date: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 20).toISOString(),
+    category: "Internet & Phone",
+    paymentMethod: "Credit Card",
+  },
+]
+
+export const initialReminders: Reminder[] = [
+  {
+    id: "1",
+    title: "Pay Internet Bill",
+    description: "Don't forget to pay the internet bill",
+    date: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 2).toISOString(),
+    billId: "3",
+    isCompleted: false,
+  },
+  {
+    id: "2",
+    title: "Call Insurance Company",
+    description: "Discuss the new policy options",
+    date: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 5).toISOString(),
+    isCompleted: false,
+  },
+]
+
+export const initialUsers: User[] = [
+  {
+    id: "1",
+    name: "John Doe",
+    email: "john@example.com",
+    avatar: "/placeholder.svg?height=40&width=40",
+    role: "owner",
+  },
+  {
+    id: "2",
+    name: "Jane Smith",
+    email: "jane@example.com",
+    avatar: "/placeholder.svg?height=40&width=40",
+    role: "editor",
+  },
+]
+
