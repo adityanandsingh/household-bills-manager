@@ -46,15 +46,15 @@ function BillsListComponent({ bills, categories, onUpdateStatus, onDeleteBill }:
         const daysUntilDue = getDaysUntilDue(bill.dueDate)
 
         return (
-          <div key={bill.id} className="flex items-center justify-between border-b pb-3">
+          <div key={bill.id} className="flex flex-col sm:flex-row sm:items-center justify-between border-b pb-3 gap-2">
             <div className="flex items-start gap-2">
               <div>
                 <p className="font-medium">{bill.name}</p>
-                <div className="flex items-center text-sm text-muted-foreground">
+                <div className="flex flex-wrap items-center text-sm text-muted-foreground gap-1">
                   <p>Due {format(new Date(bill.dueDate), "MMM d, yyyy")}</p>
                   <Badge
                     variant="outline"
-                    className="ml-2"
+                    className="ml-0 sm:ml-2"
                     style={{ borderColor: category?.color, color: category?.color }}
                   >
                     {bill.category}
@@ -62,7 +62,7 @@ function BillsListComponent({ bills, categories, onUpdateStatus, onDeleteBill }:
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2 mt-2 sm:mt-0">
               <p className="font-bold">${bill.amount.toFixed(2)}</p>
               {!bill.isPaid && daysUntilDue > 0 && (
                 <Badge

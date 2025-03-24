@@ -81,8 +81,8 @@ function DashboardViewComponent({ bills, categories, paymentHistory, reminders, 
     }, [bills, paymentHistory, reminders])
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <Card>
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <Card className="shadow-sm">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Due This Month</CardTitle>
           <DollarSign className="h-4 w-4 text-muted-foreground" />
@@ -92,7 +92,7 @@ function DashboardViewComponent({ bills, categories, paymentHistory, reminders, 
           <p className="text-xs text-muted-foreground">{billsDueThisMonth.length} bills remaining</p>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="shadow-sm">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Paid This Month</CardTitle>
           <CreditCard className="h-4 w-4 text-muted-foreground" />
@@ -102,7 +102,7 @@ function DashboardViewComponent({ bills, categories, paymentHistory, reminders, 
           <p className="text-xs text-muted-foreground">{paidThisMonth.length} payments made</p>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="shadow-sm">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Largest Category</CardTitle>
           <Home className="h-4 w-4 text-muted-foreground" />
@@ -112,7 +112,7 @@ function DashboardViewComponent({ bills, categories, paymentHistory, reminders, 
           <p className="text-xs text-muted-foreground">{housingPercentage}% of monthly expenses</p>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="shadow-sm">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Upcoming Bills</CardTitle>
           <Zap className="h-4 w-4 text-muted-foreground" />
@@ -122,25 +122,29 @@ function DashboardViewComponent({ bills, categories, paymentHistory, reminders, 
           <p className="text-xs text-muted-foreground">Due in the next 7 days</p>
         </CardContent>
       </Card>
-      <Card className="col-span-2">
+      <Card className="sm:col-span-2 shadow-sm">
         <CardHeader>
           <CardTitle>Monthly Expenses</CardTitle>
           <CardDescription>Your spending over the last 6 months</CardDescription>
         </CardHeader>
         <CardContent className="px-2">
-          <MonthlyExpensesChart paymentHistory={paymentHistory} />
+          <div className="h-[300px]">
+            <MonthlyExpensesChart paymentHistory={paymentHistory} />
+          </div>
         </CardContent>
       </Card>
-      <Card className="col-span-2">
+      <Card className="sm:col-span-2 shadow-sm">
         <CardHeader>
           <CardTitle>Expense Breakdown</CardTitle>
           <CardDescription>Current month expenses by category</CardDescription>
         </CardHeader>
         <CardContent className="px-2">
-          <CategoryBreakdownChart bills={bills} categories={categories} />
+          <div className="h-[300px]">
+            <CategoryBreakdownChart bills={bills} categories={categories} />
+          </div>
         </CardContent>
       </Card>
-      <Card className="col-span-2">
+      <Card className="sm:col-span-2 shadow-sm">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
             <CardTitle>Upcoming Bills</CardTitle>
@@ -151,7 +155,7 @@ function DashboardViewComponent({ bills, categories, paymentHistory, reminders, 
           <UpcomingBillsList bills={bills} />
         </CardContent>
       </Card>
-      <Card className="col-span-2">
+      <Card className="sm:col-span-2 shadow-sm">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
             <CardTitle>Reminders</CardTitle>
@@ -168,7 +172,7 @@ function DashboardViewComponent({ bills, categories, paymentHistory, reminders, 
       </Card>
 
       {billsDueSoon.length > 0 && (
-        <Card className="col-span-4">
+        <Card className="sm:col-span-2 lg:col-span-4 shadow-sm">
           <CardHeader>
             <Alert variant="destructive">
               <BellRing className="h-4 w-4" />

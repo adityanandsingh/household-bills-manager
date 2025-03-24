@@ -38,7 +38,7 @@ function BillsViewComponent({
 
   return (
     <div className="grid gap-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold tracking-tight">Bills</h2>
           <p className="text-muted-foreground">Manage your household bills and recurring payments</p>
@@ -56,13 +56,19 @@ function BillsViewComponent({
       </div>
 
       <Tabs defaultValue="unpaid">
-        <TabsList>
-          <TabsTrigger value="unpaid">Unpaid Bills</TabsTrigger>
-          <TabsTrigger value="paid">Paid Bills</TabsTrigger>
-          <TabsTrigger value="recurring">Recurring Bills</TabsTrigger>
+        <TabsList className="w-full sm:w-auto">
+          <TabsTrigger value="unpaid" className="flex-1">
+            Unpaid Bills
+          </TabsTrigger>
+          <TabsTrigger value="paid" className="flex-1">
+            Paid Bills
+          </TabsTrigger>
+          <TabsTrigger value="recurring" className="flex-1">
+            Recurring Bills
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="unpaid">
-          <Card>
+          <Card className="shadow-sm">
             <CardHeader>
               <CardTitle>Unpaid Bills</CardTitle>
               <CardDescription>Bills that need to be paid</CardDescription>
@@ -78,7 +84,7 @@ function BillsViewComponent({
           </Card>
         </TabsContent>
         <TabsContent value="paid">
-          <Card>
+          <Card className="shadow-sm">
             <CardHeader>
               <CardTitle>Paid Bills</CardTitle>
               <CardDescription>Bills that have been paid</CardDescription>
@@ -94,7 +100,7 @@ function BillsViewComponent({
           </Card>
         </TabsContent>
         <TabsContent value="recurring">
-          <Card>
+          <Card className="shadow-sm">
             <CardHeader>
               <CardTitle>Recurring Bills</CardTitle>
               <CardDescription>Bills that repeat on a schedule</CardDescription>

@@ -145,17 +145,31 @@ export default function BillManagerApp() {
   )
 
   return (
-    <Tabs defaultValue="dashboard" value={activeTab} onValueChange={setActiveTab}>
-      <TabsList className="grid grid-cols-6 w-full max-w-[600px]">
-        <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
-        <TabsTrigger value="bills">Bills</TabsTrigger>
-        <TabsTrigger value="history">History</TabsTrigger>
-        <TabsTrigger value="documents">Documents</TabsTrigger>
-        <TabsTrigger value="budget">Budget</TabsTrigger>
-        <TabsTrigger value="settings">Settings</TabsTrigger>
-      </TabsList>
+    <Tabs defaultValue="dashboard" value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+      <div className="overflow-auto pb-2">
+        <TabsList className="inline-flex h-auto p-1 w-full max-w-3xl">
+          <TabsTrigger value="dashboard" className="flex-1 py-2 px-3">
+            Dashboard
+          </TabsTrigger>
+          <TabsTrigger value="bills" className="flex-1 py-2 px-3">
+            Bills
+          </TabsTrigger>
+          <TabsTrigger value="history" className="flex-1 py-2 px-3">
+            History
+          </TabsTrigger>
+          <TabsTrigger value="documents" className="flex-1 py-2 px-3">
+            Documents
+          </TabsTrigger>
+          <TabsTrigger value="budget" className="flex-1 py-2 px-3">
+            Budget
+          </TabsTrigger>
+          <TabsTrigger value="settings" className="flex-1 py-2 px-3">
+            Settings
+          </TabsTrigger>
+        </TabsList>
+      </div>
 
-      <TabsContent value="dashboard">
+      <TabsContent value="dashboard" className="mt-0">
         <DashboardView
           bills={bills}
           categories={categories}
@@ -164,7 +178,7 @@ export default function BillManagerApp() {
           onAddReminder={addReminder}
         />
       </TabsContent>
-      <TabsContent value="bills">
+      <TabsContent value="bills" className="mt-0">
         <BillsView
           bills={bills}
           categories={categories}
@@ -176,22 +190,22 @@ export default function BillManagerApp() {
       </TabsContent>
 
       {/* Lazy load less frequently accessed views */}
-      <TabsContent value="history">
+      <TabsContent value="history" className="mt-0">
         <Suspense fallback={<LoadingSpinner />}>
           <PaymentHistoryView paymentHistory={paymentHistory} categories={categories} />
         </Suspense>
       </TabsContent>
-      <TabsContent value="documents">
+      <TabsContent value="documents" className="mt-0">
         <Suspense fallback={<LoadingSpinner />}>
           <DocumentsView bills={bills} />
         </Suspense>
       </TabsContent>
-      <TabsContent value="budget">
+      <TabsContent value="budget" className="mt-0">
         <Suspense fallback={<LoadingSpinner />}>
           <BudgetView bills={bills} paymentHistory={paymentHistory} categories={categories} />
         </Suspense>
       </TabsContent>
-      <TabsContent value="settings">
+      <TabsContent value="settings" className="mt-0">
         <Suspense fallback={<LoadingSpinner />}>
           <SettingsView
             categories={categories}

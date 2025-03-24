@@ -54,22 +54,22 @@ function UpcomingBillsListComponent({ bills }: UpcomingBillsListProps) {
   return (
     <div className="space-y-4">
       {upcomingBills.map((bill) => (
-        <div key={bill.id} className="flex items-center justify-between border-b pb-3">
+        <div key={bill.id} className="flex flex-col sm:flex-row sm:items-center justify-between border-b pb-3 gap-2">
           <div className="flex items-start gap-2">
             <div className={cn("mt-0.5", getBillStatusColor(bill.dueDate))}>
               <CalendarIcon className="h-4 w-4" />
             </div>
             <div>
               <p className="font-medium">{bill.name}</p>
-              <div className="flex items-center text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center text-sm text-muted-foreground gap-1">
                 <p>Due {format(new Date(bill.dueDate), "MMM d, yyyy")}</p>
-                <Badge variant="outline" className="ml-2">
+                <Badge variant="outline" className="ml-0 sm:ml-2">
                   {bill.category}
                 </Badge>
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2 mt-2 sm:mt-0">
             <p className="font-bold">${bill.amount.toFixed(2)}</p>
             <Badge
               className={cn(
